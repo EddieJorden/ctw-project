@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/EddieJorden/ctw-project/static/css/main.83e629b8.css",
+    "main.js": "/EddieJorden/ctw-project/static/js/main.31349a5b.js",
+    "static/js/787.4e610c38.chunk.js": "/EddieJorden/ctw-project/static/js/787.4e610c38.chunk.js",
+    "index.html": "/EddieJorden/ctw-project/index.html",
+    "main.83e629b8.css.map": "/EddieJorden/ctw-project/static/css/main.83e629b8.css.map",
+    "main.31349a5b.js.map": "/EddieJorden/ctw-project/static/js/main.31349a5b.js.map",
+    "787.4e610c38.chunk.js.map": "/EddieJorden/ctw-project/static/js/787.4e610c38.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.83e629b8.css",
+    "static/js/main.31349a5b.js"
+  ]
+}
