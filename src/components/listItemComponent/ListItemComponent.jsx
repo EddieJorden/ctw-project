@@ -3,37 +3,44 @@ import React, { useState, memo } from 'react';
 import PropTypes from 'prop-types';
 import { updateIndex, selectListItemData } from '../arrayGenerator/arraySlice';
 
-const ListItemComponent = memo(({ index }) => {
-  const listItemData = useSelector(selectListItemData);
-  const { name: listItemName, age: listItemAge, email: listItemEmail } = listItemData[index];
-  const [name, setName] = useState(listItemName);
-  const [age, setAge] = useState(listItemAge);
-  const [email, setEmail] = useState(listItemEmail);
-  const dispatch = useDispatch();
+const ListItemComponent = memo(
+  ({ index }) => {
+    const listItemData = useSelector(selectListItemData);
+    const { name: listItemName, age: listItemAge, email: listItemEmail } = listItemData[index];
+    const [name, setName] = useState(listItemName);
+    const [age, setAge] = useState(listItemAge);
+    const [email, setEmail] = useState(listItemEmail);
+    const dispatch = useDispatch();
 
-  const handleClick = () => {
-    dispatch(updateIndex({
-      name,
-      age,
-      email,
-      index,
-    }));
-  };
+    const handleClick = () => {
+      dispatch(updateIndex({
+        name,
+        age,
+        email,
+        index,
+      }));
+    };
 
-  return (
-    <div key={index}>
-      <div style={{ backgroundColor: 'black', margin: '15px 0px', padding: '10px' }}>
-        <div>
-          {index}
+    return (
+      <div key={index}>
+        <div style={{ backgroundColor: 'black', margin: '15px 0px', padding: '10px' }}>
+          <div>
+            {index}
+          </div>
+          <input key={1} type="text" defaultValue={listItemName} onChange={(e) => { setName(e.target.value); }} />
+          <input key={2} type="text" defaultValue={listItemAge} onChange={(e) => { setAge(e.target.value); }} />
+          <input key={3} type="text" defaultValue={listItemEmail} onChange={(e) => { setEmail(e.target.value); }} />
+          <button type="button" onClick={handleClick}>submit</button>
         </div>
-        <input key={1} type="text" defaultValue={listItemName} onChange={(e) => { setName(e.target.value); }} />
-        <input key={2} type="text" defaultValue={listItemAge} onChange={(e) => { setAge(e.target.value); }} />
-        <input key={3} type="text" defaultValue={listItemEmail} onChange={(e) => { setEmail(e.target.value); }} />
-        <button type="button" onClick={handleClick}>submit</button>
       </div>
-    </div>
-  );
-});
+    );
+  },
+  (prevProps, nextProps) => {
+    if (prevProps === nextProps) {
+      return true;
+    } return false;
+  },
+);
 
 ListItemComponent.defaultProps = {
   item: {
