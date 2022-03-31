@@ -2,18 +2,20 @@
   "name": "ctw-project",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/EddieJorden/ctw-project",
+  "homepage": "https://eddiejorden.github.io/ctw-project/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.2.1",
+    "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-memo": "^0.3.1",
     "react-redux": "^7.2.6",
     "react-scripts": "5.0.0",
-    "web-vitals": "^2.1.0"
+    "web-vitals": "^2.1.0",
+    "yarn": "^1.22.18"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -40,5 +42,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "description": "create 1000 input feilds that can update a redux store",
+  "main": "index.js",
+  "repository": "https://github.com/EddieJorden/ctw-project.git",
+  "author": "EddieJorden <eddie@eddiejorden.tech>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.12.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.4.0"
   }
 }
