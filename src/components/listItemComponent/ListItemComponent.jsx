@@ -47,9 +47,9 @@ ListItemComponent.defaultProps = {
 
 ListItemComponent.propTypes = {
   item: PropTypes.shape({
-    name: 'name',
-    age: 'age',
-    email: 'email',
+    name: PropTypes.string,
+    age: PropTypes.string,
+    email: PropTypes.string,
   }),
   index: PropTypes.number,
 };
