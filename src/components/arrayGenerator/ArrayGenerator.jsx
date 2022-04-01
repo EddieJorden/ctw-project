@@ -1,32 +1,36 @@
 import { useSelector } from 'react-redux';
 import { memo } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { selectArray } from './arraySlice';
 import ListItemComponent from '../listItemComponent/ListItemComponent';
+import { selectFilter } from '../filterComponent/filterSlice';
 
 const ArrayGenerator = memo(
-  ({
-    filter,
-  }) => {
+  () => {
     const generatedArray = useSelector(selectArray);
+    const filter = useSelector(selectFilter);
+
+    const {
+      name, age, email, active, index,
+    } = filter.filter;
 
     return (
       <div>
         {generatedArray.array.map((item, i) => {
-          const arrayIndex = i;
-          if (filter.active === false) {
+          const itemIndex = i;
+          if (!active) {
             return (
-              <div key={arrayIndex} style={{ backgroundColor: 'green', margin: '15px 0px' }}>
-                <ListItemComponent key={arrayIndex} item={item} index={arrayIndex} />
+              <div key={itemIndex} style={{ backgroundColor: 'green', margin: '15px 0px' }}>
+                <ListItemComponent key={itemIndex} item={item} index={itemIndex} />
               </div>
             );
           }
-          if (filter.active) {
-            if (((item.name === filter.name)
-            || item.age === filter.age || item.email === filter.email)) {
+          if (active) {
+            if ((item.name === name)
+            || (item.age === age) || (item.email === email) || (i === Number(index))) {
               return (
-                <div key={arrayIndex} style={{ backgroundColor: 'green', margin: '15px 0px' }}>
-                  <ListItemComponent key={arrayIndex} item={item} index={arrayIndex} />
+                <div key={itemIndex} style={{ backgroundColor: 'green', margin: '15px 0px', width: '100px' }}>
+                  <ListItemComponent key={itemIndex} item={item} index={itemIndex} />
                 </div>
               );
             }
@@ -45,12 +49,10 @@ const ArrayGenerator = memo(
 
 ArrayGenerator.defaultProps = {
   filter: false,
-
 };
 
 ArrayGenerator.propTypes = {
-  filter: PropTypes.bool,
-
+  // filter: PropTypes.bool,
 };
 
 export default ArrayGenerator;
