@@ -6,6 +6,7 @@ const array = new Array(LEN).fill({
   name: 'default name',
   age: 'default age',
   email: 'default email',
+  index: null,
 });
 
 const arraySlice = createSlice({
