@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useCallback, memo } from 'react';
 import ArrayGenerator from './components/arrayGenerator/ArrayGenerator';
 
 function App() {
@@ -9,18 +9,50 @@ function App() {
   const [ageFilter, setAgeFilter] = useState('age filter');
   const [emailFilter, setEmailFilter] = useState('email filter');
 
-  const updateFilterState = () => {
-    if (nameFilter !== '' || ageFilter !== '' || emailFilter !== '') {
-      setFilter(true);
-    } else setFilter(false);
+  const isFilter = () => {
+    let activeFilter = {
+      active: true,
+      name: nameFilter,
+      age: ageFilter,
+      email: emailFilter,
+    };
+    if (filter) {
+      return activeFilter;
+    }
+    activeFilter = {
+      active: false,
+      name: '',
+      age: '',
+      email: '',
+    };
+    return activeFilter;
   };
 
+  const runFilter = () => {
+    setFilter(true);
+  };
+
+  // const runFilter = () => {
+  //   if (nameFilter !== '' || ageFilter !== '' || emailFilter !== '') {
+  //     setFilter(true);
+  //   } else setFilter(false);
+  // };
+
   const clearFilter = () => {
-    setNameFilter('');
-    setAgeFilter('');
-    setEmailFilter('');
     setFilter(false);
   };
+
+  const updateNameFilter = useCallback((e) => {
+    setNameFilter(e.target.value);
+  }, [setNameFilter]);
+
+  const updateAgeFilter = useCallback((e) => {
+    setAgeFilter(e.target.value);
+  }, [setAgeFilter]);
+
+  const updateEmailFilter = useCallback((e) => {
+    setEmailFilter(e.target.value);
+  }, [setEmailFilter]);
 
   return (
     <div className="App">
@@ -28,18 +60,15 @@ function App() {
         hello world
       </h1>
       <div>Filters</div>
-      <input input="text" placeholder={nameFilter} onChange={(e) => setNameFilter(e.target.value)} />
-      <input input="text" placeholder={ageFilter} onChange={(e) => setAgeFilter(e.target.value)} />
-      <input input="text" placeholder={emailFilter} onChange={(e) => setEmailFilter(e.target.value)} />
-      <button type="button" onClick={updateFilterState}>filter</button>
+      <input input="text" placeholder={nameFilter} onChange={updateNameFilter} />
+      <input input="text" placeholder={ageFilter} onChange={updateAgeFilter} />
+      <input input="text" placeholder={emailFilter} onChange={updateEmailFilter} />
+      <button type="button" onClick={runFilter}>filter</button>
       <button type="button" onClick={clearFilter}>clear filter</button>
       <div>
         <ul>
           <ArrayGenerator
-            filter={filter}
-            nameFilter={nameFilter}
-            ageFilter={ageFilter}
-            emailFilter={emailFilter}
+            filter={isFilter()}
           />
         </ul>
       </div>
@@ -47,4 +76,4 @@ function App() {
   );
 }
 
-export default App;
+export default memo(App);
