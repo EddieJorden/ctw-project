@@ -35,7 +35,7 @@ const ListItemComponent = memo(
 
     return (
       <div key={index}>
-        <div style={{ backgroundColor: 'black', margin: '15px 0px', padding: '10px' }}>
+        <div style={{ backgroundColor: '#257FFA', margin: '15px 0px', padding: '10px' }}>
           <div>
             {index}
           </div>
