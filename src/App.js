@@ -6,12 +6,15 @@ function App() {
   return (
     <div className="App">
       <h1>
-        hello world
+        React Redux Challenge
       </h1>
       <div>
         <FilterComponent />
       </div>
-      <div>
+      <div style={{
+        display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%', padding: '15px',
+      }}
+      >
         <ul>
           <ArrayGenerator />
         </ul>
