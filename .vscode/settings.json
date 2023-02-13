@@ -1,0 +1,7 @@
+{
+	"editor.insertSpaces": false,
+  "editor.detectIndentation": false,
+  "prettier.useTabs": true,
+	"editor.tabSize": 2,
+	"prettier.bracketSameLine": true
+}
