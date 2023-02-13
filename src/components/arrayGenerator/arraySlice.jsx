@@ -3,25 +3,25 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const LEN = 1000;
 const array = new Array(LEN).fill({
-  name: 'default name',
-  age: 'default age',
-  email: 'default email',
-  index: null,
+	name: 'default name',
+	age: 'default age',
+	email: 'default email',
+	index: null,
 });
 
 const arraySlice = createSlice({
-  name: 'array',
-  initialState: {
-    array,
-  },
-  reducers: {
-    updateIndex(state, action) {
-      state.array[action.payload.index] = action.payload;
-    },
-    createArray(state, action) {
-      state.array = action.payload;
-    },
-  },
+	name: 'array',
+	initialState: {
+		array,
+	},
+	reducers: {
+		updateIndex(state, action) {
+			state.array[action.payload.index] = action.payload;
+		},
+		createArray(state, action) {
+			state.array = action.payload;
+		},
+	},
 });
 
 export const selectArray = (state) => state.array;
